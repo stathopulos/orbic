@@ -1,0 +1,16 @@
+[alias]
+enable-adb = "run --bin enable_adb"
+build-rootshell = "build --bin 1kshell --target armv7-unknown-linux-musleabihf --profile firmware"
+
+[target.armv7-unknown-linux-musleabihf]
+linker = "rust-lld"
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[profile.firmware]
+inherits = "release"
+strip = true
+codegen-units = 1
+panic = "abort"
+debug = false
+lto = true
+opt-level = "z"

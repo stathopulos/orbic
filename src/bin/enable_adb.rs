@@ -1,8 +1,8 @@
 //! Enable adb on Orbic RC400l
-//! 
+//!
 //! Use this program at your own risk!!
 //! It's generally not a good idea to send random USB control messages down the wire using a random program you found on the internet!
-//! 
+//!
 //! If the command was successful, the device will reboot and adb will be enabled while RNDIS will be disabled (regardless of your USB tethering setting)
 
 use nusb::MaybeFuture;
