@@ -1,3 +1,10 @@
+//! Enable adb on Orbic RC400l
+//! 
+//! Use this program at your own risk!!
+//! It's generally not a good idea to send random USB control messages down the wire using a random program you found on the internet!
+//! 
+//! If the command was successful, the device will reboot and adb will be enabled while RNDIS will be disabled (regardless of your USB tethering setting)
+
 use nusb::MaybeFuture;
 use nusb::transfer::{ControlOut, ControlType, Recipient};
 use std::io;
@@ -10,6 +17,8 @@ const RNDIS_INTERFACE: u8 = 1;
 
 fn main() -> Result<(), io::Error> {
     let timeout = Duration::from_secs(1);
+    // "to enable ADB, send a USB control message of type LIBUSB_REQUEST_TYPE_VENDOR, request 0xa0, a value of 0, and no data"
+    // https://xdaforums.com/t/resetting-verizon-orbic-speed-rc400l-firmware-flash.4334899/post-87777475
     let enable_command_mode = ControlOut {
         control_type: ControlType::Vendor,
         recipient: Recipient::Device,
