@@ -1,6 +1,7 @@
 [alias]
 enable-adb = "run --bin enable_adb"
 build-rootshell = "build --bin 1kshell --target armv7-unknown-linux-musleabihf --profile firmware"
+at-cmds = "run --bin at_commands"
 
 [target.armv7-unknown-linux-musleabihf]
 linker = "rust-lld"
